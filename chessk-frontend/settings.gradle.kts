@@ -1,4 +1,4 @@
-rootProject.name = "chessk-frontend"
+rootProject.name = "chesskapp"
 
 pluginManagement {
     includeBuild("build-logic")
@@ -52,3 +52,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
+//include(":androidApp")
+include(":desktopApp")
+
+include(":shared")
