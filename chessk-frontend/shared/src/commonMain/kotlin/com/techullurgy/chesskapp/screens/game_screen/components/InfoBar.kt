@@ -1,9 +1,7 @@
 package com.techullurgy.chesskapp.screens.game_screen.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.TextAutoSize
@@ -30,24 +28,15 @@ import androidx.compose.ui.layout.MultiContentMeasurePolicy
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.techullurgy.chesskapp.core.utils.DeviceConfigurationType
 import com.techullurgy.chesskapp.screens.game_screen.adaptive.LocalDeviceType
-import com.techullurgy.chesskapp.screens.game_screen.adaptive.ProvideDeviceType
 import com.techullurgy.chesskapp.screens.game_screen.models.GameState
-import com.techullurgy.chesskapp.screens.game_screen.models.Initial
-import com.techullurgy.chesskapp.screens.game_screen.models.UiBoard
-import com.techullurgy.chesskapp.screens.game_screen.models.UiParticipant
 import com.techullurgy.chesskapp.screens.game_screen.models.UiPieceColor
-import com.techullurgy.chesskapp.screens.game_screen.models.UiTurn
 import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.minutes
-import kotlin.time.Duration.Companion.seconds
 
 @Composable
 internal fun InfoBar(

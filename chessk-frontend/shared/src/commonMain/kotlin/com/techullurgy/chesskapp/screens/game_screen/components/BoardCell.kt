@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.style.ExperimentalFoundationStyleApi
 import androidx.compose.foundation.style.MutableStyleState
 import androidx.compose.foundation.style.Style
@@ -20,6 +21,8 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.layout.ContentScale
@@ -44,6 +47,17 @@ internal fun BoardCell(
             contentAlignment = Alignment.Center
         ) {
             piece?.let {
+                // Shadow Layer
+                Icon(
+                    painter = painterResource(it.icon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .offset(3.dp, 3.dp)
+                        .blur(6.dp)
+                        .alpha(0.4f)
+                )
+                // Main Icon
                 Image(
                     painter = painterResource(it.icon),
                     contentDescription = null,
