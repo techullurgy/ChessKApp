@@ -1,45 +1,160 @@
-# ChessK
+# ChessK — Online Real-Time Room-Based Chess Game
 
-## 1. Description
-**ChessK** is a full-stack, real-time multiplayer chess platform engineered using Kotlin Multiplatform (KMP) and Compose Multiplatform for client applications, alongside a lightweight, high-performance Ktor backend. The application delivers an interactive chess-playing experience across Android, iOS, and Desktop platforms with synchronous real-time game state synchronization.
+A modern, cross-platform **real-time multiplayer Chess application** built with **Kotlin Multiplatform** and **Compose Multiplatform**, delivering a consistent user experience across **Android**, **iOS**, and **Desktop**.
 
----
+**ChessK** is designed around online room-based chess gameplay, allowing players to create or join private game rooms and compete against each other in real time. The application handles chess rules, legal move validation, turn management, synchronized game state, player sessions, and complete game lifecycle management.
 
-## 2. Technical Special Aspects
-- **Custom Build Logic Conventions**: Utilizes modular Gradle convention plugins (`build-logic/conventions`) written in Kotlin DSL to standardize dependencies, target configurations, and build tasks across multi-module KMP subprojects.
-- **Bi-Directional WebSocket Protocol**: Implements custom type-safe event serializers (`ClientToServerBaseEvent` and `ServerToClientBaseEvent`) built on top of `kotlinx.serialization` for low-latency WebSocket communication.
-- **Adaptive Screen Layout Engine**: Dynamically adapts UI representation based on active display dimensions (`PhonePortraitGameScreen`, `PhoneLandscapeGameScreen`, `DesktopGameScreen`) with custom board cell modifiers.
-- **Shared Game Domain Engine**: Centralized move validation, turn state tracking (`UiBoard`, `UiTurn`, `GameState`), piece placement encodings, and timer section components shared across target platforms via `chessk-common`.
+Designed with a **modular and scalable architecture**, the project demonstrates how a shared Kotlin codebase can power multiple platforms while maintaining responsive UI, reusable business logic, and platform-specific integrations where required.
 
 ---
 
-## 3. Technologies Used
-- **Languages**: Kotlin (100% shared business & UI logic)
-- **Frontend Architecture**: Kotlin Multiplatform (KMP), Compose Multiplatform
-- **Backend Architecture**: Spring Boot, Ktor Server, Ktor WebSockets, Kotlin Coroutines
-- **State Management & Navigation**: Navigation3, MVVM
-- **Serialization**: `kotlinx.serialization` (JSON & WebSocket frame payloads)
-- **Build Tools**: Gradle KTS, Gradle Version Catalogs (`libs.versions.toml`, `server.versions.toml`)
+## Highlights
+
+* **Cross-Platform Application**
+
+  * Shared application and business logic across Android, iOS, and Desktop.
+  * Platform-specific implementations only where required.
+  * Consistent UI and behavior across supported platforms.
+
+* **Real-Time Multiplayer Chess**
+
+  * Online player-versus-player chess.
+  * Real-time move synchronization between players.
+  * Automatic turn management.
+  * Synchronized board and game state.
+  * Handles player connection and disconnection states.
+
+* **Room-Based Gameplay**
+
+  * Create a new chess room.
+  * Join an existing room using a room code.
+  * Support for private multiplayer matches.
+  * Player and room state management.
+  * Game starts when the required players are connected.
+
+* **Chess Game Engine**
+
+  * Legal chess move validation.
+  * Turn-based gameplay.
+  * Check and checkmate detection.
+  * Stalemate and draw detection.
+  * Castling support.
+  * En passant support.
+  * Pawn promotion.
+  * Resignation and game completion handling.
+
+* **Interactive Chessboard**
+
+  * Tap/click-based piece selection and movement.
+  * Visual indication of selected pieces.
+  * Legal move highlighting.
+  * Last-move indication.
+  * Captured piece handling.
+  * Responsive board layout across different screen sizes.
+
+* **Game State & Synchronization**
+
+  * Centralized chess game state.
+  * Real-time updates between connected players.
+  * Move history tracking.
+  * Player color assignment.
+  * Reliable synchronization of turns and board positions.
+
+* **Modern UI**
+
+  * Built with **Compose Multiplatform**.
+  * Responsive layouts for mobile and desktop.
+  * State-driven UI architecture.
+  * Smooth transitions and animations.
+  * Modern chess-focused user experience.
 
 ---
 
-## 4. Testing Technologies
-- **Unit & Logic Testing**: `kotlin.test` framework across multiplatform target modules
-- **Target Test Suites**:
-  - `commonTest`: Shared board state algorithms and move serialization validation
-  - `iosTest`: iOS-specific runtime integration tests
-  - `androidHostTest`: Android host environment test runner
-  - `jvmTest`: Desktop/JVM test execution runner
+## Architecture
+
+The project follows a **clean, modular, and scalable architecture** that separates presentation, domain logic, data/networking, and platform-specific implementations.
+
+### Core Technologies
+
+* **Kotlin Multiplatform (KMP)**
+
+  * Shared chess domain and business logic.
+  * Shared models and game-state management.
+  * Common networking abstractions.
+  * Platform-specific implementations where necessary.
+
+* **Compose Multiplatform (CMP)**
+
+  * Declarative UI shared across Android, iOS, and Desktop.
+  * Reusable chessboard and game components.
+  * Responsive layouts for multiple screen sizes.
+  * Consistent visual experience across platforms.
+
+* **Koin**
+
+  * Dependency Injection for shared and platform modules.
+  * Centralized dependency configuration.
+  * Improves modularity and testability.
+
+* **Jetpack Navigation 3**
+
+  * Type-safe application navigation.
+  * Modular navigation structure.
+  * Predictable navigation and back-stack management.
+
+* **Real-Time Communication**
+
+  * Room and player synchronization.
+  * Real-time chess move exchange.
+  * Server/client game-state synchronization.
+  * Connection and session management.
+
+* **Android Gradle Plugin (AGP) 9+**
+
+  * Modern Android build configuration.
+  * Improved build tooling and performance.
 
 ---
 
-## 5. Cloud Technologies
-- **Deployment Readiness**: Standard Gradle shadow JAR distribution for Ktor server backend. Cloud hosting ready for containerized platforms (Docker, AWS ECS, GCP Cloud Run).
+## Technical Focus
+
+This project focuses on building a **production-ready multiplatform real-time multiplayer application** with an emphasis on:
+
+* Clean Architecture principles.
+* Kotlin Multiplatform development.
+* Real-time multiplayer communication.
+* Room-based game management.
+* Shared chess game logic.
+* Legal chess move validation.
+* Reactive UI and state management.
+* Dependency Injection using Koin.
+* Navigation using modern Navigation 3 APIs.
+* Modular project organization.
+* Cross-platform networking abstractions.
+* Connection and session management.
+* Maintainable and scalable codebase.
+* Consistent user experience across platforms.
 
 ---
 
-## 6. ROADMAP
-- [ ] Integrate an AI chess engine bot (Stockfish API / localized engine) for offline single-player mode.
-- [ ] Implement user authentication, ELO rating calculation, and competitive matchmaking pools.
-- [ ] Add PGN (Portable Game Notation) export and full game move replay history.
-- [ ] Implement spectator mode allowing active match streams and live chat rooms.
+## Skills Demonstrated
+
+* Kotlin Multiplatform Development
+* Compose Multiplatform UI
+* Real-Time Multiplayer Application Development
+* Online Room-Based Game Architecture
+* Android Application Development
+* iOS Application Development
+* Desktop Application Development
+* Chess Engine & Rule Implementation
+* Chess Move Validation
+* Real-Time State Synchronization
+* Networking & Session Management
+* Dependency Injection with Koin
+* Navigation Architecture
+* Reactive State Management
+* Clean Architecture
+* Modular Project Structure
+* Kotlin Coroutines & Flow
+* Algorithm Implementation
+* Cross-Platform Software Engineering
